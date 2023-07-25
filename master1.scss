@@ -1,0 +1,122 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(131, 75, 1);
+}
+
+/* border test class 1*/
+.bt1 {
+    border: 2px solid blue;
+}
+
+/* background test class 1 */
+.bgt1 {
+    background-color: green;
+}
+
+/* background test class 2 */
+.bgt2 {
+    background-color: red;
+}
+
+.gallery {
+    width: 400px;
+    height: 550px;
+    margin: 50px auto;
+    // @extend .bt1;
+    position: relative;
+
+    &::after {
+        content: '';
+        // display: flex;
+        width: 100%;
+        height: 100%;
+        border: 15px solid rgba(0, 0, 0, 0.356);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    >img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    >.border2 {
+        width: 100%;
+        height: 100%;
+        border: 0px solid rgba(0, 0, 0, 0.274);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: .4s;
+    }
+
+    &:hover>.border2 {
+        border: 30px solid rgba(0, 0, 0, 0.274);
+    }
+
+    &:hover>span:nth-of-type(1) {
+        top: calc(50% - 30px);
+        left: calc(50% - 62px);
+        background-color: rgba(0, 0, 0, 0.644);
+
+        // @extend .bgt1
+    }
+
+    &:hover>span:nth-of-type(2) {
+        bottom: calc(50% - 30px);
+        right: calc(50% - 62px);
+        background-color: rgba(0, 0, 0, 0.644);
+
+        // @extend .bgt2
+    }
+
+    >span {
+        width: 130px;
+        height: 70px;
+        background-color: rgba(0, 0, 0, 0);
+        position: absolute;
+        transition: 1s;
+        &:nth-of-type(1){
+            top: 35%;
+            left: 15%;
+        }
+        &:nth-of-type(2){
+            bottom: 35%;
+            right: 15%;
+        }
+    }
+
+    >figcaption {
+        width: 100%;
+        height: 60px;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        text-transform: uppercase;
+        position: absolute;
+        top: calc(50% - 35px);
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 999;
+        // @extend .bt1
+        opacity: 0;
+    }
+    &:hover>figcaption{
+        opacity: 1;
+        transition: 2.4s;
+
+    }
+}
